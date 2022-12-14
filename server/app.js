@@ -31,6 +31,7 @@ app.post('/api/insert', (req, res) => {
 	const sql = "INSERT INTO movies (name, review) VALUES (?, ?)";
 	db.query(sql, [name, review], (err, result) => {
 		if (err) { console.log(err); }
+		res.status(201).json(result);
 	});
 });
 
@@ -48,6 +49,7 @@ app.put('/api/update/', (req, res) => {
 	const sql = "UPDATE movies SET review = ? where name = ?";
 	db.query(sql, [review, name], (err, result) => {
 		if (err) { console.log(err); }
+		res.json(result);
 	});	
 });
 
